@@ -1,0 +1,125 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html,body{
+    height: auto;
+    width: 100%;
+}
+
+.navbar{
+    height: 75px;
+}
+.fa-compass{
+    color: #fe424d;
+    font-size: 32px;
+}
+.nav-link{
+    font-weight: bolder !important;
+    color: rgb(0, 0, 0) !important;
+}
+.row{
+    justify-content: space-around;
+
+}
+.card{
+    border: none !important;
+    width: 19rem !important;
+    margin-bottom: 16px;
+    padding: 0 !important;
+    
+}
+.cardd{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-body{
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+}
+.image-container{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 16px;
+}
+.card-img-top{
+    border-radius: 10px !important; 
+    object-fit:fill !important;
+    aspect-ratio: 3/2 !important;
+    width: 100% !important;
+}
+/* .imgecontainer{
+    height:250px !important;
+    width: 250px !important;
+    border-radius: 10px !important; 
+} */
+
+input{
+    padding-left: 5px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+input:focus{
+    outline: none;
+    border-color: #e7616a;
+    box-shadow: inset 0 1px 4px #fe424d, 0 0 20px 2px #f16b74;
+}
+textarea{
+    padding-left: 5px;
+    height: 80px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+.sub-btn{
+    background-color: #fe424d;
+    border: none;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+/* detail route */
+
+.card-detail{
+    width: 500px !important;
+}
+.show-img{
+    width: 100% !important;
+    height: 425px !important;
+    object-fit:fill !important;
+    border-radius: 16px;
+    margin-bottom: 15px;
+}
+@media (max-width:500px) {
+    .show-img{
+        height: 200px !important;
+        margin-bottom: 15px;
+    }
+}
+.detail{
+    padding-left: 12px;
+    justify-content: space-between !important;
+}
+.edit{
+    width: 80px;
+    height: 30px;
+}
+.rating:focus{
+    border:none !important;
+    box-shadow: none !important;
+}
+
+/* review */
+
+/* .review_container{
+    width: 330px !important;
+}
+
+@media (max-width:1171px) {
+    .review_container{
+        width: 260px !important;
+    }
+} */

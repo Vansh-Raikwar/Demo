@@ -1,0 +1,52 @@
+<% layout("./bolierPlate/boilerplate.ejs")-%>
+<body>
+    <form method="POST" action="/listings/edit/<%=result.id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="row ">
+            <div class="col-md-8">
+                <h3 class="mb-3">Edit Listing</h3>
+                <div class="mb-3">
+                    <label for="title">Title</label><br>
+                    <input name = "listing[title]" required type="text" class="w-100 form-control" placeholder="enter title" value="<%=result.title%>">
+                    <div class="invalid-feedback">enter an valid title</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description">Description</label><br>
+                    <textarea name="listing[description]" required type="text" class="w-100 form-control" placeholder="enter discription" rows="4" cols="50"><%=result.description%></textarea>
+                    <div class="invalid-feedback">enter an valid description</div>
+                </div>         
+                <div class=" col-lg-3 col-md-6 col-8 p-0 w-md-5" style="height: 200px; margin-bottom: 55px;">
+                    <label for="listing[image].url" class="mb-3">Previous Listing Image</label>
+                    <img src="<%=result.image.url%>" alt="" style="width: 100%; height: 100%; " class="img-fluid rounded"/>
+                </div>      
+                <div class="mb-3">
+                    <label for="listing[image].url">Uplaod New Image</label><br>
+                    <input name="listing[image].url" class="form-control" style="height: auto;" type="file" class="w-100" placeholder="enter image url" value="<%=result.image.url%>">
+                    <div class="invalid-feedback">enter an valid image URL</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="price">Price</label><br>
+                        <input name="listing[price]" required class="w-100 form-control" type="number" placeholder="enter price" value="<%= result.price %>">
+                        <div class="invalid-feedback">enter an valid price</div>
+                    </div>
+                    <div class="col-md-8">
+                         <label for="country">Country</label><br>
+                    <input type="text" required name="listing[country]" class="w-100 mb-3 form-control" placeholder="enter country" value="<%=result.country%>">
+                    <div class="invalid-feedback">enter an valid country</div>
+
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location">Location</label><br>
+                    <input name="listing[location]" required type="text" class="w-100 form-control" placeholder="enter location" value="<%=result.location%>">
+                    <div class="invalid-feedback">enter an valid location</div>
+                    
+                </div>
+                <button type="submit"  class="sub-btn btn-sm rounded col-md-1" style="background-color: #fe424d; font-size: large;"">Edit</button>
+            </div>
+        </div>
+    </form>
+    <script src="/js/validator_logic.js"></script>
+    <script src="/js/map.js"></script>
+</body>
+</html>

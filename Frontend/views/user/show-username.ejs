@@ -1,0 +1,13 @@
+<%- layout("./bolierPlate/boilerplate.ejs") -%>
+<body>
+    <div class="row mat-3">
+        <h1 class="col-8 mb-4" style="text-align: center;" >Your Username</h1>
+        <div class="col-md-6 col-10 offset-md-0">
+            <div class="alert alert-success" role="alert">
+                Your username is: <strong><%= username %></strong>
+            </div>
+            <a href="/login" class="btn btn-primary" style="background-color: #fe424d; border:none">Go to Login</a>
+        </div>
+    </div>
+</body>
+</html> 

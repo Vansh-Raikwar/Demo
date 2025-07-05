@@ -1,0 +1,20 @@
+<%- layout("./bolierPlate/boilerplate.ejs") -%>
+<body>
+    <div class="row mat-3">
+        <h1 class="col-8 mb-4" style="text-align: center;" >Forget Password</h1>
+        <div class="col-md-6 col-10 offset-md-0">
+            <form action="/forget-password/check-mail" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="email">Enter Mail</label>
+                    <input name="email" type="mail" class="form-control w-100 mb-3" placeholder="enter mail" required></input>
+                    <div class="invalid-feedback">Mail is required</div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:15px; background-color: #fe424d; border:none">Send Mail</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/validator_logic.js"></script>
+</body>
+</html>

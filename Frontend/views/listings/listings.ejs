@@ -1,0 +1,25 @@
+<% layout("./bolierPlate/boilerplate.ejs") -%>
+
+<body>
+    
+    <div class="row row-cols-lg-4 row-cols-md-7 row-cols-sm-3 row-cols-1 justify-content-md-evenly mt-3">
+        <% for (l of result) { %>
+            <a class="card m-2" style="width: 18rem;  text-decoration: none;" href="/listings/<%=l.id%>">
+                <div class="cardd" style="width: 19rem;  ">
+                    <div class="image-container" style="height: 200px; width: 100%; overflow: hidden; border-radius: 16px;">
+                        <img src="<%= l.image.url%>" 
+                            class="card-img-top " 
+                            alt="..." 
+                            style="height: 100%; width: 100%;">
+                    </div>
+                    <h5 class="card-title ml-md-1" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" ><%= l.title %></h5>
+                    
+                    <p class="price ml-md-1">&#8377; <%= l.price ? l.price.toLocaleString("en-IN") : 'N/A' %>/Night</p></div>
+            </a>
+        <% } %>
+    </div>
+</body>
+</html>
+
+</body>
+</html>

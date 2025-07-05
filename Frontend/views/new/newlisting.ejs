@@ -1,0 +1,49 @@
+<% layout("./bolierPlate/boilerplate.ejs") -%>
+
+<body>
+    <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 style="margin-bottom: 15px;">Create New Listing</h3>
+                <div>
+                    <label for="listing[title]">Title</label>
+                    <input name="listing[title]" type="text" class="form-control w-100 mb-3" placeholder="enter title" required>
+                    <div class="invalid-feedback">Please enter a title</div>
+                </div>
+                <div>
+                    <label for="listing[description]">Description</label>
+                    <textarea name="listing[description]" class="form-control w-100 mb-3" placeholder="enter description" required></textarea>
+                    <div class="invalid-feedback">Please enter a short description</div>
+                </div>
+                
+                <div>
+                    <label for="image">Upload Image</label>
+                    <input name="listing[image].url" type="file" class="form-control w-100 mb-3" style="height: auto;" >
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="price">Price</label>
+                        <input name="listing[price]" type="number" class="form-control w-100 mb-3" placeholder="enter price" required>
+                        <div class="invalid-feedback">Please enter a valid price</div>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="country">Country</label>
+                        <input name="listing[country]" type="text" class="form-control w-100 mb-3" placeholder="enter country" required>
+                        <div class="invalid-feedback">Please enter a valid country</div>
+                    </div>
+                </div>
+                <div>
+                    <label for="location">Location</label>
+                    <input name="listing[location]" type="text" class="form-control w-100 mb-3" placeholder="enter location" required>
+                    <div class="invalid-feedback">Please enter a valid location</div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:15px; background-color: #fe424d; border:none">Create Listing</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="/js/validator_logic.js"></script>
+</body>
+</html>

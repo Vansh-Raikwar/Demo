@@ -1,0 +1,116 @@
+<% layout("./bolierPlate/boilerplate.ejs") -%>
+<script>
+    const mapToken = "<%= process.env.MAP_TOKEN %>";
+    const listing = <%- JSON.stringify(result) %>;
+</script>
+<body>
+    <div class="row ">
+        <div class="col-md-6 offset-md-0">
+            <div>
+                <h2>Listing Details</h2>
+            </div>
+            <div class="col-lg-12 p-0">
+                <img src="<%=result.image.url%>" class="card-img-top-detail show-img">
+            </div>
+            <div>
+                <p>Owner : <%= result.owner.username %></p>
+                <h5 class="card-title"><%=result.title%></h5>
+                <p class="card-text"><%=result.description%></p>
+                <p>Price : &#8377;<%=result.price ? result.price.toLocaleString("en-IN") : "N/A"%></p>
+                <p>Location : <%=result.location%></p>
+                <p>Country : <%=result.country%></p>
+            </div>
+            <% if(currUser && currUser._id.equals(result.owner._id)) { %>
+                <div class="row g-0">
+                    <div class="col-6 text-start">
+                        <a method="get" class="btn btn-primary btn-sm" href="/listings/edit/<%=result.id%>" style="font-size: large; background-color: #fe424d; border:none">Edit</a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <form method="POST" action="/listings/delete/<%=result.id%>?_method=DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm rounded" style="background-color: #fe424d; font-size: large;">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+
+            <% if(currUser) { %>
+                <div class="mt-4 mb-4">
+                    <h4>Leave a review</h4>
+                    <form method="POST" action="/listings/<%=result.id%>/reviews" class="needs-validation" novalidate>
+                        <label for="rating" style="font-size: larger;">Rating</label>
+                        <fieldset class="starability-slot">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                        <div class="mb-3">
+                            <label for="review[message]">Leave a review</label>
+                            <textarea name="review[message]" required rows="5" class="form-control"></textarea>
+                            <div class="invalid-feedback">Enter a valid review</div>
+                        </div>
+                        <button class="sub-btn btn-sm mt-3 rounded" type="submit" style="font-size: large;">Submit</button> 
+                    </form>
+                </div>
+            <% } %>
+            <% if(result.reviews.length>0) { %>
+                <hr>
+                <h4 class="mb-3">All Reviews</h4>
+                <div class="row col-lg-20 m-md-0 ml-md-1 p-0 offset-md-0 ml-0 mr-0 justify-content-between">
+                    <% for (r of result.reviews) { %>
+                        <div class="review_container col-lg-5 col-md-5 mb-4" style=" border: solid 1px #ccc; border-radius: 10px; padding: 10px;">
+                            <h4><%= r.author.username %></h4>
+                            <p style="margin-bottom: 6px;"><%=r.message%></p>
+                            <p style="margin-bottom: 4px;">
+                                <% for (let i = 0; i < r.rating; i++) { %>
+                                    <i class="fa fa-star" style="color:#FDCC0D"></i>
+                                <% } %>
+                            </p>
+                            <% if(currUser && currUser._id.equals(r.author._id)) { %>
+                                <form method="POST" action="/listings/<%=result.id%>/reviews/<%=r.id%>?_method=DELETE">
+                                    <button class="sub-btn btn-sm rounded" style="margin: 5px 0px 5px 0px; background-color: #fe424d; border:none">Delete</button>
+                                </form>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+            <hr>
+            <div class="col-md-20 offset-md-0 p-0 mb-3">
+                <h4>Where you'll be</h3>
+                <div id="map" style="width: 100%; height: 300px;"></div>
+            </div>
+        </div>
+    </div>  
+    <script src="/js/validator_logic.js"></script>
+    <script src="/js/map.js"></script>
+    
+</body>
+</html>
+
+
+<!-- <% if(result.reviews.length>0){ %>
+    <hr class="col">
+    <h4 class="p-0">All Reviews</h4>
+    <div class="row col-md-15 justify-content-between">
+        <% for(r of result.reviews){ %>
+            <div class="col-md-6 mb-3 " style="width:210px ; border: solid 1px #ccc; border-radius: 10px; padding: 10px; padding-left: 10px; padding-bottom: 4px;">
+                <h4>Jane Deo</h4>
+                <p style="margin-bottom: 6px;"><%=r.message%></p>
+                <p>
+                    <% for(let i=0;i<r.rating; i++){ %>
+                        <i class="fa fa-star" style="color:rgb(163, 152, 0)"></i>
+                    <%}%>
+                </p>
+            </div>
+        <%}%>
+        <p class="p-0"><%=result.reviews[0].message%></p>
+    </div>
+<%}%> -->
